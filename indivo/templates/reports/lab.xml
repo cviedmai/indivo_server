@@ -1,0 +1,18 @@
+{% load template_utils %}<LabReport xmlns="http://indivo.org/vocab/xml/documents#">
+  <dateMeasured>{{ lab.date_measured|format_iso8601_datetime }}</dateMeasured>
+  <labType>{{ lab.lab_type }}</labType>
+  <laboratory>
+    <name>{{ lab.lab_name }}</name>
+    <address>{{ lab.lab_address }}</address>
+  </laboratory>
+  <comments>{{ lab.lab_comments }}</comments>
+  {% if lab.first_panel_name %}
+  <firstPanelName>{{lab.first_panel_name}}</firstPanelName>
+  {% endif %}
+  {% if lab.first_lab_test_name %}
+  <firstLabTestName>{{lab.first_lab_test_name}}</firstLabTestName>
+  {% endif %}
+  {% if lab.first_lab_test_value %}
+  <firstLabTestValue>{{lab.first_lab_test_value}}</firstLabTestValue>
+  {% endif %}
+</LabReport>

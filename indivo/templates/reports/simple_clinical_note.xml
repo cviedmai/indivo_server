@@ -1,0 +1,28 @@
+{% load template_utils %}<SimpleClinicalNote xmlns="http://indivo.org/vocab/xml/documents#">
+  {% if scn.date_performed %}
+  <dateOfVisit>{{ scn.date_of_visit|format_iso8601_datetime }}</dateOfVisit>
+  {% endif %}
+  {% if scn.visit_type %}
+  <visitType type="{{ scn.visit_type_type }}" value="{{ scn.visit_type_value }}" abbrev="{{ scn.visit_type_abbrev }}">{{ scn.visit_type }}</visitType>
+  {% endif %}
+  {% if scn.visit_location %}
+  <visitLocation>{{ scn.visit_location }}</visitLocation>
+  {% endif %}
+  {% if scn.specialty %}
+  <specialty type="{{ scn.specialty_type }}" value="{{ scn.specialty_value }}" abbrev="{{ scn.specialty_abbrev }}">{{ scn.specialty }}</specialty>
+  {% endif %}
+  {% if scn.provider_name %}
+  <provider>
+    <name>{{ scn.provider_name }}</name>
+    {% if scn.provider_institution %}
+    <institution>{{ scn.provider_institution }}</institution>
+    {% endif %}
+  </provider>
+  {% endif %}
+  {% if scn.chief_complaint %}
+  <chiefComplaint>{{ scn.chief_complaint }}</chiefComplaint>
+  {% endif %}
+  {% if scn.content %}
+  <content>{{ scn.content }}</content>
+  {% endif %}
+</SimpleClinicalNote>
